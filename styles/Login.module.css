@@ -1,0 +1,189 @@
+.form {
+  width: 50rem;
+  background: black;
+  border-radius: 2rem;
+  box-shadow: 0 0 40px -10px #000;
+  margin: calc(50vh - 220px) auto;
+  margin-top: 9rem;
+  margin-bottom: 3rem;
+  padding: 20px 30px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+}
+
+.icon {
+    width: 2rem;
+    color: white;
+}
+
+.pajaro {
+    margin-top: -4rem;
+    margin-left: 19rem;
+    margin-bottom: -4rem;
+}
+
+.title {
+  width: 25rem;
+  margin-left: 9rem;
+  margin-top: 6rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.apple {
+    width: 27rem;
+    height: 3.2rem;
+    display: flex;
+    gap: 1rem;
+    margin-left: 8rem;
+    padding-left: 5rem;
+    background-color: white;
+    color: var(--negro);
+    font-size: 1.5rem;
+    font-weight: 700;
+    align-items: center;
+    font-family: var(--fuente-principal);
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+}
+
+.lineas {
+    width: 40rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.linea_parrafo {
+    margin-left: 6rem;
+    margin-top: -.3rem;
+    font-size: 1.7rem;
+    color: white;
+}
+
+.linea {
+    width: 100%;
+    height: 1px;
+    margin-top: 1rem;
+    color: rgb(72, 72, 72);
+    background-color: white;
+}
+
+.inputs {
+  width: 60%;
+  height: 5rem;
+  padding: 10px;
+  margin-left: 8.5rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  color: white;
+  background: black;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid #5a5a5a;
+}
+
+.input {
+    width: 60%;
+    height: 5rem;
+    padding: 10px;
+    margin-left: 8.5rem;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    color: white;
+    background: black;
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid #5a5a5a;
+  }
+
+.parrafos:before {
+  content: attr(type);
+  display: block;
+  margin: 28px 0 0;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+.btn {
+    width: 27rem;
+    height: 3.2rem;
+    display: flex;
+    gap: 1rem;
+    margin-left: 8rem;
+    padding-left: 9.7rem;
+    background-color: white;
+    color: var(--negro);
+    font-size: 1.5rem;
+    font-weight: 700;
+    align-items: center;
+    font-family: var(--fuente-principal);
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+}
+
+.btn2 {
+    width: 27rem;
+    height: 3.2rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-left: 8rem;
+    padding-left: 5rem;
+    background-color: black;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    align-items: center;
+    font-family: var(--fuente-principal);
+    border: 1px solid white;
+    border-radius: 5rem;
+    cursor: pointer;
+}
+
+.cuenta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 9rem;
+    margin-top: 2rem;
+}
+
+.crear {
+    color: gray;
+    font-size: 1.2rem;
+}
+
+.link {
+    color: var(--primary);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.error {
+    border: 1px solid rgb(255, 55, 55);
+    width: 60%;
+    height: 5rem;
+    padding: 10px;
+    margin-left: 8.5rem;
+    margin-bottom: 5rem;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+.errorParrafo {
+    margin-left: 8.5rem;
+    margin-top: -4rem;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    color: rgb(255, 55, 55);
+}

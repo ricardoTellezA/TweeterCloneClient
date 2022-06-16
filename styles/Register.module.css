@@ -1,0 +1,119 @@
+.form {
+    width: 50rem;
+    background: black;
+    border-radius: 2rem;
+    box-shadow: 0 0 40px -10px #000;
+    margin: calc(50vh - 220px) auto;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    padding: 20px 30px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+  }
+  
+  .icon {
+      width: 2rem;
+      color: white;
+  }
+  
+  .pajaro {
+      margin-top: -4rem;
+      margin-left: 19rem;
+      margin-bottom: -4rem;
+  }
+  
+  .title {
+    width: 25rem;
+    margin-left: 12.5rem;
+    margin-top: 6rem;
+    font-size: 3rem;
+    font-weight: 700;
+    padding-bottom: 10px;
+    color: white;
+  }
+
+  .label {
+      font-size: 1.5rem;
+      color: white;
+      margin-left: 9rem;
+      margin-bottom: 1rem;
+  }
+  
+  .inputs {
+    width: 60%;
+    height: 5rem;
+    padding: 10px;
+    margin-left: 8.5rem;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid #5a5a5a;
+  }
+
+  .parrafo {
+      display: grid;
+  }
+  
+  .btn {
+      width: 27rem;
+      height: 3.2rem;
+      display: flex;
+      gap: 1rem;
+      margin-left: 8rem;
+      margin-top: 3rem;
+      padding-left: 10.3rem;
+      background-color: var(--primary);
+      color: var(--blanco);
+      font-size: 1.7rem;
+      font-weight: 200;
+      align-items: center;
+      font-family: var(--fuente-principal);
+      border: none;
+      border-radius: 5rem;
+      cursor: pointer;
+  }
+  
+.cuenta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 9rem;
+    margin-top: 2rem;
+}
+
+.crear {
+    color: gray;
+    font-size: 1.2rem;
+}
+
+.link {
+    color: var(--primary);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.error {
+    border: 1px solid rgb(255, 55, 55);
+    width: 60%;
+    height: 5rem;
+    padding: 10px;
+    margin-left: 8.5rem;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+.errorParrafo {
+    margin-left: 8.5rem;
+    margin-top: -1.2rem;
+    margin-bottom: -1rem;
+    font-size: 1.5rem;
+    color: rgb(255, 55, 55);
+}
+  
