@@ -37,31 +37,13 @@ export default function Home() {
           </div>
           <h1 className={styles.title}>Lo que está pasando ahora</h1>
           <p className={styles.parrafo}>Únete a Twitter Clon hoy mismo.</p>
-          <button className={styles.boton}>
-            <Image
-              height={"20rem"}
-              width={"20rem"}
-              src="/img/apple-logo.png"
-              alt="Apple"
-            />
-            Registrate con Apple
-          </button>
-          <div className={styles.lineas}>
-            <hr className={styles.linea} />{" "}
-            <p className={styles.linea_parrafo}>o</p>{" "}
-            <hr className={styles.linea} />
-          </div>
-          <button className={styles.boton2}>
-            Registrate con el número de teléfo...
-          </button>
-          <p className={styles.privacidad}>
-            Al registrarte, aceptas los{" "}
-            <span className={styles.spans}>Términos de servicio</span> y la{" "}
-            <span className={styles.spans}>Política de privacidad</span>,
-            incluida la política de{" "}
-            <span className={styles.spans}> Uso de Cookies</span>.
-          </p>
-          <h2 className={styles.cuenta}>¿Ya tienes una cuenta?</h2>
+            <div className={styles.cuenta}>
+              <Link href="/register">
+                <button className={styles.boton2}>
+                  Registrate con el número de teléfo...
+                </button>
+              </Link>
+            </div>
             <Link href="/login"><a className={styles.boton3}>Iniciar sesión</a></Link>
         </div>
         <footer className={styles.footer}>

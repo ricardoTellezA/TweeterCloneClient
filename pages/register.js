@@ -4,32 +4,60 @@ import Link from "next/link";
 import styles from "../styles/Register.module.css";
 import { useFormik } from "formik";
 import { basicSchema } from "../schemas";
+import { useMutation, gql } from "@apollo/client";
+
+const REGISTER_USER = gql`
+  mutation registerUser($input: UserInput) {
+    registerUser(input: $input) {
+      id
+      username
+      name
+    }
+  }
+`;
 
 const Register = () => {
-  const onSubmit = () => {
-    console.log("Enviando");
-  }
+  const [registerUser] = useMutation(REGISTER_USER);
 
-  const { handleChange, errors, touched, handleBlur, values, handleSubmit } = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-      nombre: "",
-      usuario: "",
-      password2: "",
-    },
-    validationSchema: basicSchema,
-    onSubmit,
-  });
+  const onSubmit = async () => {
+    // console.log("Enviando");
+    const [ email, password, password2, name, username ] = values;
+
+    try {
+     await registerUser({
+      variables: {
+        input: {
+          email,
+          password,
+          password2,
+          name,
+          username
+        }
+      }
+     })
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const { handleChange, errors, touched, handleBlur, values, handleSubmit } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+        name: "",
+        username: "",
+        password2: "",
+      },
+      validationSchema: basicSchema,
+      onSubmit,
+    });
 
   return (
     <Layout paginas={"Registrar"}>
       <div className={styles.contenedor}>
         <div>
-          <form 
-            className={styles.form}
-            onSubmit={handleSubmit} 
-          >
+          <form className={styles.form} onSubmit={handleSubmit}>
             <Link href="/">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,32 +86,44 @@ const Register = () => {
             <p className={styles.parrafo}>
               <label className={styles.label}>Nombre: </label>
               <input
-                id="nombre"
-                className={ errors.nombre && touched.nombre ? styles.error : styles.inputs}
+                id="name"
+                className={
+                  errors.nombre && touched.nombre ? styles.error : styles.inputs
+                }
                 placeholder="Nombre y Apellido."
-                value={values.nombre}
+                value={values.name}
                 onChange={handleChange}
-                onBlur={handleBlur} 
+                onBlur={handleBlur}
               />
             </p>
-            {errors.nombre && touched.nombre && (<p className={styles.errorParrafo}>{errors.nombre}</p>)}
+            {errors.nombre && touched.nombre && (
+              <p className={styles.errorParrafo}>{errors.nombre}</p>
+            )}
 
             <p className={styles.parrafo}>
               <label className={styles.label}>Usuario: </label>
-              <input 
-                className={ errors.usuario && touched.usuario ? styles.error : styles.inputs } 
-                id="usuario"
-                value={values.usuario}
+              <input
+                className={
+                  errors.usuario && touched.usuario
+                    ? styles.error
+                    : styles.inputs
+                }
+                id="username"
+                value={values.username}
                 onChange={handleChange}
-                onBlur={handleBlur} 
+                onBlur={handleBlur}
               />
             </p>
-            {errors.usuario && touched.usuario && (<p className={styles.errorParrafo}>{errors.usuario}</p>)}
+            {errors.usuario && touched.usuario && (
+              <p className={styles.errorParrafo}>{errors.usuario}</p>
+            )}
 
             <p className={styles.parrafo}>
               <label className={styles.label}>Correo electronico: </label>
               <input
-                className={ errors.email && touched.email ? styles.error : styles.inputs}
+                className={
+                  errors.email && touched.email ? styles.error : styles.inputs
+                }
                 placeholder="correo@correo.com"
                 id="email"
                 type="email"
@@ -92,41 +132,53 @@ const Register = () => {
                 onBlur={handleBlur}
               />
             </p>
-              {errors.email && touched.email && (<p className={styles.errorParrafo}>{errors.email}</p>)}
+            {errors.email && touched.email && (
+              <p className={styles.errorParrafo}>{errors.email}</p>
+            )}
 
             <p className={styles.parrafo}>
               <label className={styles.label}>Contraseña: </label>
-              <input 
+              <input
                 id="password"
-                type="password" 
-                className={ errors.password && touched.password ? styles.error : styles.inputs}
+                type="password"
+                className={
+                  errors.password && touched.password
+                    ? styles.error
+                    : styles.inputs
+                }
                 value={values.password}
                 onChange={handleChange}
-                onBlur={handleBlur} 
+                onBlur={handleBlur}
               />
             </p>
-              {errors.password && touched.password && (<p className={styles.errorParrafo}>{errors.password}</p>)}
+            {errors.password && touched.password && (
+              <p className={styles.errorParrafo}>{errors.password}</p>
+            )}
 
             <p className={styles.parrafo}>
               <label className={styles.label}>Repetir contraseña: </label>
-              <input 
+              <input
                 id="password2"
                 type="password"
                 value={values.password2}
                 onChange={handleChange}
-                onBlur={handleBlur} 
-                className={ errors.password2 && touched.password2 ? styles.error : styles.inputs} 
+                onBlur={handleBlur}
+                className={
+                  errors.password2 && touched.password2
+                    ? styles.error
+                    : styles.inputs
+                }
               />
             </p>
-              {errors.password2 && touched.password2 && (<p className={styles.errorParrafo}>{errors.password2}</p>)}
+            {errors.password2 && touched.password2 && (
+              <p className={styles.errorParrafo}>{errors.password2}</p>
+            )}
             <button className={styles.btn}>Registrar</button>
             <div className={styles.cuenta}>
               <p className={styles.crear}>¿Ya tienes una Cuenta?</p>
-                <Link href="/login"> 
-                    <a className={styles.link}>
-                    Inicia Sesion
-                    </a>
-                </Link>
+              <Link href="/login">
+                <a className={styles.link}>Inicia Sesion</a>
+              </Link>
             </div>
           </form>
         </div>
