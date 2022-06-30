@@ -1,14 +1,23 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
-const httpLink = createUploadLink({
-  uri: "http://localhost:4000/graphql",
-});
+
+
 
 const client = new ApolloClient({
-  connectToDevTools: true,
+  uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
 });
+
+client
+  .query({
+    query: gql`
+      query GetRates {
+        rates(currency: "USD") {
+          currency
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result));
 
 export default client;

@@ -4,39 +4,30 @@ import Link from "next/link";
 import styles from "../styles/Register.module.css";
 import { useFormik } from "formik";
 import { basicSchema } from "../schemas";
-import { useMutation, gql } from "@apollo/client";
-
-const REGISTER_USER = gql`
-  mutation registerUser($input: UserInput) {
-    registerUser(input: $input) {
-      id
-      username
-      name
-    }
-  }
-`;
+import { REGISTER_USER } from "../schemas/gql/QuerysAndMutation";
+import { useMutation } from "@apollo/client";
 
 const Register = () => {
   const [registerUser] = useMutation(REGISTER_USER);
 
-  const onSubmit = async () => {
-    // console.log("Enviando");
-    const [ email, password, password2, name, username ] = values;
+  const onSubmit = async (values) => {
+    const { email, password, nombre, usuario } = values;
+    console.log(values);
 
     try {
-     await registerUser({
-      variables: {
-        input: {
-          email,
-          password,
-          password2,
-          name,
-          username
-        }
-      }
-     })
+      await registerUser({
+        variables: {
+          input: {
+            email,
+            password,
+            name: nombre,
+            username: usuario,
+          },
+        },
+      });
+    
     } catch (error) {
-      console.log(error)
+      console.log(error.message);
     }
   };
 
@@ -45,8 +36,8 @@ const Register = () => {
       initialValues: {
         email: "",
         password: "",
-        name: "",
-        username: "",
+        nombre: "",
+        usuario: "",
         password2: "",
       },
       validationSchema: basicSchema,
@@ -86,12 +77,12 @@ const Register = () => {
             <p className={styles.parrafo}>
               <label className={styles.label}>Nombre: </label>
               <input
-                id="name"
+                id="nombre"
                 className={
                   errors.nombre && touched.nombre ? styles.error : styles.inputs
                 }
                 placeholder="Nombre y Apellido."
-                value={values.name}
+                value={values.nombre}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -108,8 +99,8 @@ const Register = () => {
                     ? styles.error
                     : styles.inputs
                 }
-                id="username"
-                value={values.username}
+                id="usuario"
+                value={values.usuario}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -173,7 +164,9 @@ const Register = () => {
             {errors.password2 && touched.password2 && (
               <p className={styles.errorParrafo}>{errors.password2}</p>
             )}
-            <button className={styles.btn}>Registrar</button>
+            <button type="submit" className={styles.btn}>
+              Registrar
+            </button>
             <div className={styles.cuenta}>
               <p className={styles.crear}>¿Ya tienes una Cuenta?</p>
               <Link href="/login">
