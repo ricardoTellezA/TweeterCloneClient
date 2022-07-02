@@ -15,7 +15,6 @@ const Register = () => {
 
   const onSubmit = async (values) => {
     const { email, password, nombre, usuario } = values;
-    console.log(values);
 
     try {
       await registerUser({
@@ -34,7 +33,6 @@ const Register = () => {
       }, 3000);
     } catch (error) {
       toast.error(error.message.replace("GraphQL error: ", ""));
-      console.log(error);
     }
   };
 
