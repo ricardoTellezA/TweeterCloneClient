@@ -78,7 +78,7 @@ const Register = () => {
                 alt="Twitter"
               />
             </div>
-            <h2 className={styles.title}>Twitter Clon</h2>
+            <h2 className={styles.title}>Registrate en Twitter Clon</h2>
             <p className={styles.parrafo}>
               <label className={styles.label}>Name: </label>
               <input
