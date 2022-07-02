@@ -8,16 +8,17 @@ import { basicSchema } from "../schemas";
 const Login = () => {
   const onSubmit = () => {
     console.log("Enviando");
-  }
+  };
 
-  const { handleChange, errors, touched, handleBlur, values, handleSubmit } = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: basicSchema,
-    onSubmit,
-  });
+  const { handleChange, errors, touched, handleBlur, values, handleSubmit } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: basicSchema,
+      onSubmit,
+    });
 
   return (
     <Layout paginas={"Login"}>
@@ -65,7 +66,9 @@ const Login = () => {
             </div>
             <p className={styles.parrafo} type="Name:">
               <input
-                className={ errors.email && touched.email ? styles.error : styles.inputs}
+                className={
+                  errors.email && touched.email ? styles.error : styles.inputs
+                }
                 id="email"
                 type="email"
                 placeholder="Teléfono, correo electrónico o nom.."
@@ -73,9 +76,15 @@ const Login = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {errors.email && touched.email && (<p className={styles.errorParrafo}>{errors.email}</p>)}
+              {errors.email && touched.email && (
+                <p className={styles.errorParrafo}>{errors.email}</p>
+              )}
               <input
-                className={ errors.password && touched.password ? styles.error : styles.input}
+                className={
+                  errors.password && touched.password
+                    ? styles.error
+                    : styles.input
+                }
                 id="password"
                 type="password"
                 placeholder="Contraseña"
@@ -83,7 +92,9 @@ const Login = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {errors.password && touched.password && (<p className={styles.errorParrafo}>{errors.password}</p>)}
+              {errors.password && touched.password && (
+                <p className={styles.errorParrafo}>{errors.password}</p>
+              )}
             </p>
             <button className={styles.btn}>Inicia Sesión</button>
             <button className={styles.btn2}>¿Olvidaste tu contraseña?</button>

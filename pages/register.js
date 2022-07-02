@@ -1,14 +1,17 @@
+import { useRouter } from "next/router";
+import { useMutation } from "@apollo/client";
+import { REGISTER_USER } from "../schemas/gql/QuerysAndMutation";
+import { basicSchema } from "../schemas";
+import { useFormik } from "formik";
+import styles from "../styles/Register.module.css";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Register.module.css";
-import { useFormik } from "formik";
-import { basicSchema } from "../schemas";
-import { REGISTER_USER } from "../schemas/gql/QuerysAndMutation";
-import { useMutation } from "@apollo/client";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [registerUser] = useMutation(REGISTER_USER);
+  const router = useRouter();
 
   const onSubmit = async (values) => {
     const { email, password, nombre, usuario } = values;
@@ -25,9 +28,13 @@ const Register = () => {
           },
         },
       });
-    
+      toast.success("Usuario registrado correctamente");
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000);
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message.replace("GraphQL error: ", ""));
+      console.log(error);
     }
   };
 
@@ -75,7 +82,7 @@ const Register = () => {
             </div>
             <h2 className={styles.title}>Twitter Clon</h2>
             <p className={styles.parrafo}>
-              <label className={styles.label}>Nombre: </label>
+              <label className={styles.label}>Name: </label>
               <input
                 id="nombre"
                 className={
@@ -92,7 +99,7 @@ const Register = () => {
             )}
 
             <p className={styles.parrafo}>
-              <label className={styles.label}>Usuario: </label>
+              <label className={styles.label}>User name: </label>
               <input
                 className={
                   errors.usuario && touched.usuario
@@ -110,12 +117,12 @@ const Register = () => {
             )}
 
             <p className={styles.parrafo}>
-              <label className={styles.label}>Correo electronico: </label>
+              <label className={styles.label}>Email: </label>
               <input
                 className={
                   errors.email && touched.email ? styles.error : styles.inputs
                 }
-                placeholder="correo@correo.com"
+                placeholder="example@example.com"
                 id="email"
                 type="email"
                 value={values.email}
@@ -128,7 +135,7 @@ const Register = () => {
             )}
 
             <p className={styles.parrafo}>
-              <label className={styles.label}>Contraseña: </label>
+              <label className={styles.label}>Password: </label>
               <input
                 id="password"
                 type="password"
@@ -147,7 +154,7 @@ const Register = () => {
             )}
 
             <p className={styles.parrafo}>
-              <label className={styles.label}>Repetir contraseña: </label>
+              <label className={styles.label}>Repeat Password: </label>
               <input
                 id="password2"
                 type="password"

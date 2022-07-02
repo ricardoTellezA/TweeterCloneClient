@@ -8,10 +8,10 @@ export const basicSchema = yup.object().shape({
     .string()
     .email("El email no es válido.")
     .required("Por favor ingresa tu correo"),
-    nombre: yup
+  nombre: yup
     .string()
     .max(30,"El Nombre debe tener al menos 30 caracteres.")
-    .required("Su nombre es requerido"),
+    .required("Su nombre y apellido es requerido"),
   usuario: yup
     .string()
     .max(10,"El Usuario debe tener al menos 15 caracteres.")
